@@ -23,10 +23,6 @@
 USE DataWarehouse;
 GO
 
-
-
-
-
 -- 🔹 3️⃣ Création des tables de la source CRM (Customer Relationship Management)
 -- ------------------------------------------------------------
 
@@ -42,7 +38,7 @@ BEGIN
         customer_last_name NVARCHAR(50),
         customer_material_status NVARCHAR(50),
         customer_gender NVARCHAR(50),
-        customer_create_date NVARCHAR(50)
+        customer_create_date DATE
     );
     PRINT '✅ Table bronze.crm_customer_info créée avec succès.';
 END
@@ -60,9 +56,9 @@ BEGIN
         product_key NVARCHAR(50),
         product_nm NVARCHAR(50),
         product_cost INT,
-        product_line CHAR,
-        product_start_date NVARCHAR(50),
-        product_end_date NVARCHAR(50)
+        product_line NVARCHAR(50),
+        product_start_date DATETIME,
+        product_end_date DATETIME
     );
     PRINT '✅ Table bronze.crm_product_info créée avec succès.';
 END
@@ -81,10 +77,10 @@ BEGIN
         sales_order_customer_id INT,
         sales_date INT,
         sales_shipping_date INT,
+        sales_due_date INT,
         sls_sales INT,
-        sales_quatity INT,
-        sales_price INT,
-        sales_due_date INT
+        sales_quantity INT,
+        sales_price INT
     );
     PRINT '✅ Table bronze.crm_sales_details créée avec succès.';
 END
@@ -102,7 +98,7 @@ BEGIN
     CREATE TABLE bronze.erp_customer_az12
     (
         cid NVARCHAR(50),
-        birthday NVARCHAR(50),
+        birthday DATE,
         gender NVARCHAR(50)
     );
     PRINT '✅ Table bronze.erp_customer_az12 créée avec succès.';
